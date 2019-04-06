@@ -99,8 +99,7 @@ class ClientHandler extends Thread  {
   
     @Override
     //metodo run() que inicia el hilo
-    public void run()  
-    { 
+    public void run()  { 
     	//string en donde se guarda al informacion que recibe el servidor
         String received;
         
@@ -182,7 +181,7 @@ class ClientHandler extends Thread  {
     			logger = new ServerLogger(3); 
             } 
         } 
-          
+		
         try{ 
             //cierra la entrada y la salida de informacion
             this.entrada.close(); 
