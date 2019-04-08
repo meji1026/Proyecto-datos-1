@@ -53,7 +53,8 @@ public class Server {
                 
                 //informacion que envia el servidor al cliente
                 salida = new DataOutputStream(socket.getOutputStream()); 
-  
+                
+                salida.writeUTF("Letras asignadas: A-G-S-D-I");
                 //hilo que se encarga de la conexcion servidor-cliente
                 Thread hilo = new ClientHandler(socket, entrada, salida); 
   

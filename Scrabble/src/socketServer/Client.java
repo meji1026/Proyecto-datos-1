@@ -60,8 +60,9 @@ public class Client  {
 			//crea el output por donde se envia la informacion del cliente hacia el servidor
 			salida = new DataOutputStream (client.getOutputStream());
 			
+			//indica que si el cliente esta conectado inicie el hilo para la conexion con el server
 			if(client.isConnected()) {
-				
+				//crea un hilo para manejar el cliente y lo inicia
 				hilo = new ClientThread(client, entrada, salida);
 				hilo.start();
 				
@@ -78,7 +79,7 @@ public class Client  {
     public void setLista(ListaEnlazadaSimple <Letra> lista) {
     	this.hilo.setLista(lista);
     }
-    
+       
     //metodo main para probar el cliente
     public static void main(String args[]) {
     	
@@ -92,9 +93,19 @@ public class Client  {
 		l.addLast(new Letra("L"));
 		l.addLast(new Letra("E"));
 		
+		
+		ListaEnlazadaSimple <Letra> l2 = new ListaEnlazadaSimple<Letra>();
+		l2.addLast(new Letra("A"));
+		l2.addLast(new Letra("N"));
+		l2.addLast(new Letra("I"));
+		l2.addLast(new Letra("M"));
+		l2.addLast(new Letra("A"));
+		l2.addLast(new Letra("L"));
+		
+		
     	Client cliente = new Client();
     	
-    	Interfaz interfaz = new Interfaz(cliente,l);
+    	Interfaz interfaz = new Interfaz(cliente,l,l2);
 		//se indica la coordenadas donde estara ubicado el objeto, su ancho y su altura
 		interfaz.setBounds(0,0,400,400);
 		//hace que sea visible en pantalla
@@ -104,21 +115,17 @@ public class Client  {
 		//al indicar false indica que no se puede modificar el tamano de la interfaz una vez creada
 		interfaz.setResizable(false);
     	
-    	cliente.start();
-    	
-    	
-    	
-    	
-    	
-    	
-    	
+    	cliente.start();    	
     }
 }
 
+
 class ClientThread extends Thread{
 	
+	//canal por donde entra y sale la informacion
 	private Socket client;
-	//informacion que recibe el servidor
+	
+	//informacion que recibe del servidor
     private DataInputStream entrada;
     
     ////informacion que envia el servidor
@@ -135,6 +142,9 @@ class ClientThread extends Thread{
   		
   		//lista enlazada que contiene la palabra que sera enviada al servidor
   		private ListaEnlazadaSimple <Letra> lista;
+  		
+  		//boolean que indica si el cliente ya recibio las letras del servidor
+  		private boolean letras = false;
 
     
 	public ClientThread( Socket socket, DataInputStream entrada, DataOutputStream salida) {
@@ -144,47 +154,54 @@ class ClientThread extends Thread{
 	}
 	
 	 public  void run()   { 
-	        try{ 
+	        try{
+	        	//indica que si el cliente no ha recibido las letras del servidor aun no puede enviar palabras
+	        	if(letras == false) {
+	        		System.out.println(entrada.readUTF());
+	        		this.letras=true;
+	        	}
 				
-	            while (terminaJuego == false)  {
-	            	
-	            	//string que guarda el json que sera enviado
-	            	String tosend;
-	            	
-	            	//esto se cumple cuando sea el turno del jugador y cuando el cliente tenga una lista(palabra) asociada
-	                if(turno == true & palabra == true) { 
-	                	
-	                	//serializa la palabra que es una lista y la convierte en json 
-	                	tosend = Serializador.serializar(lista);
-	                	
-	                	// envia el json(tosend) al servidor
-	                	salida.writeUTF(tosend);
-	                	
-	                	//recive el string enviado por el servidor
-	                	String received = entrada.readUTF();
-	                	
-	                	//imprime la informacion(received) enviada por el servidor
-	                    System.out.println(received);
-	                    
-	                    //como ya se envio una palabra entonces el turno de este jugador es false
-	                    this.turno = false;
-	                    
-	                    //se pone false ya que no tiene una palabra(lista) asignada
-	                    this.palabra = false;
-	                    
-	                    //se pone true para que el cliente termine la conexion
-	                    this.terminaJuego = true;
-
-	                    
-	                }
-	                System.out.println("Esperando Palabra");
-	                this.sleep(1000);
-	            }
-	            salida.writeUTF("Exit");
-	            this.entrada.close(); 
-	            this.salida.close();
-	            this.stop();
-	            
+	        	else{
+		            while (terminaJuego == false)  {
+		            	
+		            	//string que guarda el json que sera enviado
+		            	String tosend;
+		            	
+		            	//esto se cumple cuando sea el turno del jugador y cuando el cliente tenga una lista(palabra) asociada
+		                if(turno == true & this.palabra == true) { 
+		                	
+		                	//serializa la palabra que es una lista y la convierte en json 
+		                	tosend = Serializador.serializar(lista);
+		                	
+		                	// envia el json(tosend) al servidor
+		                	salida.writeUTF(tosend);
+		                	
+		                	//recive el string enviado por el servidor
+		                	String received = entrada.readUTF();
+		                	
+		                	//imprime la informacion(received) enviada por el servidor
+		                    System.out.println(received);
+		                    
+		                    //como ya se envio una palabra entonces el turno de este jugador es false
+		                    //this.turno = false;
+		                    
+		                    //se pone false ya que no tiene una palabra(lista) asignada
+		                    this.palabra = false;
+		                    
+		                    //se pone true para que el cliente termine la conexion
+		                    //this.terminaJuego = true;
+	
+		                    
+		                }
+		                System.out.println("Esperando Truno y Palabra");
+		                this.sleep(1000);
+		            }
+		            //cierra la entrada y salida de informacion, termina el hilo del cliente y envia "Exit" para finalizar la conexion con el servidor
+		            salida.writeUTF("Exit");
+		            this.entrada.close(); 
+		            this.salida.close();
+		            this.stop();
+	        	}
 	            
 	 
 	        }
@@ -194,6 +211,7 @@ class ClientThread extends Thread{
 	        
 	        
 	    }
+	 
 	 
 	 public void setLista(ListaEnlazadaSimple <Letra> lista) {
 	    	this.lista = lista;
