@@ -1,16 +1,20 @@
 package Interfaz;
 import java.awt.datatransfer.Transferable;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
- 
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.*;
 import Entidades.Ficha;
+import estructurasDeDatos.ListaEnlazadaSimple;
 
 
-public class Tabblero extends JFrame{
-
+public class Tabblero extends JFrame{	
+	
+		boolean flag1 = false;
 		Ficha A = new Ficha("A");
 		Ficha B = new Ficha("B");
 		Ficha C = new Ficha("C");
@@ -761,6 +765,27 @@ public class Tabblero extends JFrame{
 
 		MouseListener listener = new DragMouseAdapter();
 
+		H8.addMouseListener(listener);
+		H8.setTransferHandler(new TransferHandler("icon"));
+		
+		if(flag1 == true) {
+			
+			G8.addMouseListener(listener);
+			G8.setTransferHandler(new TransferHandler("icon"));
+			
+			
+			H7.addMouseListener(listener);
+			H7.setTransferHandler(new TransferHandler("icon"));
+			
+			I8.addMouseListener(listener);
+			I8.setTransferHandler(new TransferHandler("icon"));
+			
+			H9.addMouseListener(listener);
+			H9.setTransferHandler(new TransferHandler("icon"));
+		}
+		
+		/**
+		
 		A1.addMouseListener(listener);
 		A1.setTransferHandler(new TransferHandler("icon"));
 
@@ -1435,7 +1460,7 @@ public class Tabblero extends JFrame{
 
 		O15.addMouseListener(listener);
 		O15.setTransferHandler(new TransferHandler("icon"));
-
+**/
 		background = new JLabel(img);
 		background.setBounds(10, 8, 800, 800);
 		add(background);
@@ -1655,7 +1680,7 @@ public class Tabblero extends JFrame{
 			
 		
 		ImageIcon letra_1;
-		int random1 = (int)(Math.random() * 101);
+		int random1 = (int)(Math.random() * 99);
 		letra_1 = listafichas[random1].getImage();
 		JLabel le1 = new JLabel(letra_1);
 		le1.setBounds(20,812, 49, 50);
@@ -1664,7 +1689,7 @@ public class Tabblero extends JFrame{
 		
 		
 		ImageIcon letra_2;
-		int random2 = (int)(Math.random() * 101);
+		int random2 = (int)(Math.random() * 99);
 		letra_2 = listafichas[random2].getImage();
 		JLabel le2 = new JLabel(letra_2);
 		le2.setBounds(80,812, 49, 50);
@@ -1672,7 +1697,7 @@ public class Tabblero extends JFrame{
 		add(le2);
 		
 		ImageIcon letra_3;
-		int random3 = (int)(Math.random() *101);
+		int random3 = (int)(Math.random() *99);
 		letra_3 = listafichas[random3].getImage();
 		JLabel le3 = new JLabel(letra_3);
 		le3.setBounds(136,812, 49, 50);
@@ -1681,7 +1706,7 @@ public class Tabblero extends JFrame{
 		
 		
 		ImageIcon letra_4;
-		int random4 = (int)(Math.random() * 101);
+		int random4 = (int)(Math.random() * 99);
 		letra_4 = listafichas[random4].getImage();
 		JLabel le4 = new JLabel(letra_4);
 		le4.setBounds(196,812, 49, 50);
@@ -1689,7 +1714,7 @@ public class Tabblero extends JFrame{
 		add(le4);
 		
 		ImageIcon letra_5;
-		int random5 = (int)(Math.random() * 101);
+		int random5 = (int)(Math.random() * 99);
 		letra_5 = listafichas[random5].getImage();
 		JLabel le5 = new JLabel(letra_5);
 		le5.setBounds(256,812, 49, 50);
@@ -1697,7 +1722,7 @@ public class Tabblero extends JFrame{
 		add(le5);
 		
 		ImageIcon letra_6;
-		int random6 = (int)(Math.random() * 101);
+		int random6 = (int)(Math.random() * 99);
 		letra_6 = listafichas[random6].getImage();
 		JLabel le6 = new JLabel(letra_6);
 		le6.setBounds(316,812, 49, 50);
@@ -1705,7 +1730,7 @@ public class Tabblero extends JFrame{
 		add(le6);
 		
 		ImageIcon letra_7;
-		int random7 = (int)(Math.random() * 101);
+		int random7 = (int)(Math.random() * 99);
 		letra_7 = listafichas[random7].getImage();
 		JLabel le7 = new JLabel(letra_7);
 		le7.setBounds(376,812, 49, 50);
@@ -1713,14 +1738,14 @@ public class Tabblero extends JFrame{
 		add(le7);
 		
 		ImageIcon letra_8;
-		int random8 = (int)(Math.random() * 101);
+		int random8 = (int)(Math.random() * 99);
 		letra_8 = listafichas[random8].getImage();
 		JLabel le8 = new JLabel(letra_8);
 		le8.setBounds(430,812, 49, 50);
 		le8.setText(listafichas[random8].getLetra());
 		add(le8);
 
-		
+		/**
 		System.out.println(listafichas[random1].getLetra());
 		System.out.println(listafichas[random2].getLetra());
 		System.out.println(listafichas[random3].getLetra());
@@ -1729,43 +1754,176 @@ public class Tabblero extends JFrame{
 		System.out.println(listafichas[random6].getLetra());
 		System.out.println(listafichas[random7].getLetra());
 		System.out.println(listafichas[random8].getLetra());
+		**/
+		DragMouseAdapter listener = new DragMouseAdapter();
+		le1.addMouseListener((listener));
+		le2.addMouseListener((listener));
+		le3.addMouseListener((listener));
+		le4.addMouseListener((listener));
+		le5.addMouseListener((listener));
+		le6.addMouseListener((listener));
+		le7.addMouseListener((listener));
+		le8.addMouseListener((listener));
 		
-		MouseListener listener = new DragMouseAdapter();
-		le1.addMouseListener(listener);
-		le2.addMouseListener(listener);
-		le3.addMouseListener(listener);
-		le4.addMouseListener(listener);
-		le5.addMouseListener(listener);
-		le6.addMouseListener(listener);
-		le7.addMouseListener(listener);
-		le8.addMouseListener(listener);
 		
-		le1.setTransferHandler(new TransferHandler("icon") {
-			@Override
-		    public int getSourceActions(JComponent comp) {
-		        return MOVE;
+		
+		le1.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		            ((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
 		    }
 		});
-		le2.setTransferHandler(new TransferHandler("icon"));
-		le3.setTransferHandler(new TransferHandler("icon"));
-		le4.setTransferHandler(new TransferHandler("icon"));
-		le5.setTransferHandler(new TransferHandler("icon"));
-		le6.setTransferHandler(new TransferHandler("icon"));
-		le7.setTransferHandler(new TransferHandler("icon"));
-		le8.setTransferHandler(new TransferHandler("icon"));
+		le2.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le3.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le4.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le5.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le6.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le7.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
+		le8.setTransferHandler(new TransferHandler("icon"){
+		    @Override
+		    protected void exportDone(JComponent source, Transferable data, int action) {
+		        if (action == MOVE){
+		        	((JLabel) source).setIcon(null);
+		            ((JLabel) source).addMouseListener(null);
+		            ((JLabel) source).setText("");
+		            flag1 = true;
+		            cargarTablero();
+		        }
+		    }
+
+		    @Override
+		    public int getSourceActions(JComponent c) {
+		        return COPY | MOVE;
+		    }
+		});
 		
 		
 		
 		
-		   JButton button1 = new JButton();
+		JButton button1 = new JButton();
         button1.setText("Play");
         button1.setBounds(36, 890, 120, 50);
+        button1.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				listener.getListaFichas().print();
+			}
+        });
         add(button1);
  
+        
 		JButton button2 = new JButton();
 		button2.setText("Done");
 		button2.setBounds(170, 897, 120, 50);
 		add(button2);
+		
 		JButton button3 = new JButton();
 		button2.setText("SCRABBLE!");
 		button2.setBounds(474, 890, 120, 50);

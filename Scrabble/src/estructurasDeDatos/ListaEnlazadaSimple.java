@@ -1,5 +1,7 @@
 package estructurasDeDatos;
 
+import Entidades.Ficha;
+
 public class ListaEnlazadaSimple <T> implements java.io.Serializable{
 	private int len;
 	private Nodo <T> first;
@@ -48,9 +50,9 @@ public class ListaEnlazadaSimple <T> implements java.io.Serializable{
 	}
 	
 	public void print() {
-		Nodo <T> aux = this.getFirst();
+		Nodo <Ficha> aux = (Nodo<Ficha>) this.getFirst();
 		while (aux != null) {
-			System.out.println(aux.getData());
+			System.out.println(aux.getData().getLetra());
 			aux = aux.getNext();}
 		
 	}
