@@ -12,7 +12,7 @@ import Entidades.Ficha;
 import estructurasDeDatos.ListaEnlazadaSimple;
 
 
-public class Tabblero extends JFrame{	
+public class Tablero extends JFrame{	
 	
 		boolean flag1 = false;
 		Ficha A = new Ficha("A");
@@ -48,9 +48,7 @@ public class Tabblero extends JFrame{
 	private Ficha[] listafichas = {A,A,A,A,A,A,A,A,A,A,A,A,B,B,C,C,C,C,CH,D,D,D,D,D,E,E,E,E,E,E,E,E,E,E,E,E,F,G,G,H,H,I,I,I,I,I,I,J,L,L,L,L,LL,M,M,N,N,N,N,N,Ñ,O,O,O,O,O,O,O,O,O,
 			P,P,Q,R,R,R,R,R,RR,S,S,S,S,S,S,T,T,T,T,U,U,U,U,U,V,X,Y,Z,Blanca,Blanca};
 	
-	public Tabblero() {
-		cargarFichas();
-		cargarTablero();
+	public Tablero() {
 	}
 
 

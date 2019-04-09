@@ -3,12 +3,15 @@ package socketServer;
 import java.io.*;
 import java.net.Socket;
 import java.util.Properties;
+
+import Interfaz.Tablero;
 import estructurasDeDatos.ListaEnlazadaSimple;
 import palabras.Letra;
 import serializador.Serializador;
 
  //clase cliente
 public class Client  {
+
 		
 		//canal por donde el cliente recibe y envia informacion
 		private Socket client;
@@ -24,6 +27,8 @@ public class Client  {
 		
 		// la salida es la informacion que se envia al servidor y en este caso se indicia que es un objeto
 		private DataOutputStream salida;
+		
+		private ObjectInputStream entrada2;
 		
 		//variable de tipo properties que en este caso se utiliza como archivo.properties de configuracion
 		private Properties properties;
@@ -57,13 +62,15 @@ public class Client  {
 			//guarda la inforacion recibida por el cliente en la variable entrada
 			entrada = new DataInputStream (client.getInputStream());
 		
+			entrada2 = new ObjectInputStream(client.getInputStream());
+			
 			//crea el output por donde se envia la informacion del cliente hacia el servidor
 			salida = new DataOutputStream (client.getOutputStream());
 			
 			//indica que si el cliente esta conectado inicie el hilo para la conexion con el server
 			if(client.isConnected()) {
 				//crea un hilo para manejar el cliente y lo inicia
-				hilo = new ClientThread(client, entrada, salida);
+				hilo = new ClientThread(client, entrada,entrada2, salida);
 				hilo.start();
 				
 			}
@@ -131,6 +138,10 @@ class ClientThread extends Thread{
     ////informacion que envia el servidor
     private DataOutputStream salida; 
     
+    private ObjectInputStream entrada2;
+    
+    private Tablero tablero;
+    
   //boolean que define si es el turno de este cliente
   		private boolean turno = true;
   		
@@ -147,28 +158,30 @@ class ClientThread extends Thread{
   		private boolean letras = false;
 
     
-	public ClientThread( Socket socket, DataInputStream entrada, DataOutputStream salida) {
+	public ClientThread( Socket socket, DataInputStream entrada,ObjectInputStream entrada2, DataOutputStream salida) {
 		this.client = socket;
 	    this.entrada = entrada; 
-	    this.salida = salida; 
+	    this.salida = salida;
+	    this.entrada2 = entrada2;
 	}
 	
 	 public  void run()   { 
 	        try{
 	        	//indica que si el cliente no ha recibido las letras del servidor aun no puede enviar palabras
 	        	if(letras == false) {
-	        		System.out.println(entrada.readUTF());
-	        		this.letras=true;
+	        		this.tablero = (Tablero) entrada2.readObject();
+	        		tablero.setVisible(true);
+	        		this.letras = true;
 	        	}
 				
-	        	else{
+	        	if(letras==true){
 		            while (terminaJuego == false)  {
 		            	
 		            	//string que guarda el json que sera enviado
 		            	String tosend;
 		            	
 		            	//esto se cumple cuando sea el turno del jugador y cuando el cliente tenga una lista(palabra) asociada
-		                if(turno == true & this.palabra == true) { 
+		                if(turno == true & palabra == true) { 
 		                	
 		                	//serializa la palabra que es una lista y la convierte en json 
 		                	tosend = Serializador.serializar(lista);
@@ -183,17 +196,16 @@ class ClientThread extends Thread{
 		                    System.out.println(received);
 		                    
 		                    //como ya se envio una palabra entonces el turno de este jugador es false
-		                    //this.turno = false;
+		                    this.turno = false;
 		                    
 		                    //se pone false ya que no tiene una palabra(lista) asignada
 		                    this.palabra = false;
 		                    
 		                    //se pone true para que el cliente termine la conexion
-		                    //this.terminaJuego = true;
+		                    this.terminaJuego = true;
 	
 		                    
 		                }
-		                System.out.println("Esperando Truno y Palabra");
 		                this.sleep(1000);
 		            }
 		            //cierra la entrada y salida de informacion, termina el hilo del cliente y envia "Exit" para finalizar la conexion con el servidor

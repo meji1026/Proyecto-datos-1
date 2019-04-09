@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+import Interfaz.Mainventana;
 import palabras.Letra;
 import palabras.validacion;
 import serializador.Serializador;
@@ -30,18 +31,26 @@ public class Server {
 		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
 		private ServerLogger logger;
 		
+		private Mainventana ventana;
+		
+		private ObjectOutputStream salida2;
+		
+		
     public void start(){ 
         try {
        
         	//se crea el servidor
 			server = new ServerSocket(port);
 			 
+			this.ventana = new Mainventana();
+    		//se pone a escuchar al servidor 
+			
         while (true) { 
         	
         		//se crea el canal por donde se envia y se recibe la informacion
         		socket = new Socket();
                 
-        		//se pone a escuchar al servidor 
+        		
                 socket = server.accept(); 
                  
                 //indica que se ha conectado un nuevo cliente
@@ -53,8 +62,12 @@ public class Server {
                 
                 //informacion que envia el servidor al cliente
                 salida = new DataOutputStream(socket.getOutputStream()); 
+               
+                salida2 = new ObjectOutputStream(socket.getOutputStream());
                 
-                salida.writeUTF("Letras asignadas: A-G-S-D-I");
+                salida2.writeObject(this.ventana.getTablero());
+                
+                
                 //hilo que se encarga de la conexcion servidor-cliente
                 Thread hilo = new ClientHandler(socket, entrada, salida); 
   

@@ -2,7 +2,7 @@ package Entidades;
 
 import javax.swing.ImageIcon;
 
-public class Ficha {
+public class Ficha implements java.io.Serializable {
 	private String[] listaPaths = {"src/interfaz/images/a.jpg", "src/interfaz/images/b.jpg", "src/interfaz/images/c.jpg", "src/interfaz/images/ch.jpg", "src/interfaz/images/d.jpg", "src/interfaz/images/e.jpg", "src/interfaz/images/f.jpg", "src/interfaz/images/g.jpg", "src/interfaz/images/h.jpg", "src/interfaz/images/i.jpg", 
 			"src/interfaz/images/j.jpg", "src/interfaz/images/l.jpg", "src/interfaz/images/ll.jpg", "src/interfaz/images/m.jpg", "src/interfaz/images/n.jpg", "src/interfaz/images/ñ.jpg", "src/interfaz/images/o.jpg", "src/interfaz/images/p.jpg", "src/interfaz/images/q.jpg", "src/interfaz/images/r.jpg", 
 			"src/interfaz/images/rr.jpg", "src/interfaz/images/s.jpg", "src/interfaz/images/t.jpg", "src/interfaz/images/u.jpg", "src/interfaz/images/v.jpg", "src/interfaz/images/x.jpg", "src/interfaz/images/y.jpg" , "src/interfaz/images/z.jpg"};

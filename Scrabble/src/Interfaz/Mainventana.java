@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class Mainventana extends JFrame implements ActionListener{
+	private Tablero tablero;
 	public Mainventana() {
 		setSize(600, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,18 +31,21 @@ public class Mainventana extends JFrame implements ActionListener{
         butt.setBounds(0, 600, 120, 70);
         add(butt);
         
-        
+        tablero = new Tablero();
         butt.addActionListener(this);}
         
+		
+		
         public void actionPerformed(ActionEvent e) {
-                this.setVisible(false);
-                new Tabblero().setVisible(true);
+        		this.setVisible(false);
+                this.dispose();
+                this.tablero.cargarFichas();
+                this.tablero.cargarTablero();
+                this.tablero.setVisible(true);
             }
-       
-	
-	
-	public static void main(String args[]) {
-		new Mainventana();
-	}
+        
+        public Tablero getTablero() {
+        	return this.tablero;
+        }
 
 }
