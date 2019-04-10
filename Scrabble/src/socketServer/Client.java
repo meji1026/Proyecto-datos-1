@@ -34,7 +34,7 @@ public class Client  {
 		private Properties properties;
 		
 		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
-		private ServerLogger logger;
+		
 		
 		public ClientThread hilo;
 		
@@ -42,7 +42,7 @@ public class Client  {
     public  void start()   { 
         try{ 
         	//variable que se encarga de leer archivos
-			FileReader reader = new FileReader("C:\\Users\\mario\\Desktop\\datos\\ScrabbleGit\\Scrabble\\resources\\ClientProperties.properties");
+			FileReader reader = new FileReader("C:\\Users\\abiga\\Desktop\\scrabble\\Scrabble\\resources\\ClientProperties.properties");
 				
 			//se instancia variable tipo propesties
 			properties = new Properties();
@@ -78,7 +78,7 @@ public class Client  {
         }
         catch(Exception e){ 
         	System.out.println(e.getMessage());
-			logger = new ServerLogger(2); 
+			
         } 
     }
     

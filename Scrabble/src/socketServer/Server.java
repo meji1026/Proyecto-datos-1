@@ -29,7 +29,6 @@ public class Server {
 		private DataInputStream  entrada;
 		
 		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
-		private ServerLogger logger;
 		
 		private Mainventana ventana;
 		
@@ -78,7 +77,7 @@ public class Server {
  
         catch (Exception e){  
             System.out.println(e.getMessage());
-			logger = new ServerLogger(1); 
+			
         }
     } 
     
@@ -130,7 +129,7 @@ class ClientHandler extends Thread  {
         String toreturn;
         
         //logger para regiistrar errores
-        ServerLogger logger;
+       
         
         //ciclo que maneja la logica de la informacion recibida y enviada
 		while (true)  { 
@@ -192,7 +191,7 @@ class ClientHandler extends Thread  {
             }    
             catch (IOException e) { 
             	System.out.println(e.getMessage());
-    			logger = new ServerLogger(3); 
+    			 
             } 
         } 
 		
@@ -204,7 +203,7 @@ class ClientHandler extends Thread  {
         }
         catch(IOException e){ 
         	System.out.println(e.getMessage());
-			logger = new ServerLogger(3); 
+			 
         } 
     } 
 }

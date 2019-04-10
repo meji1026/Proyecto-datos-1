@@ -50,9 +50,9 @@ public class ListaEnlazadaSimple <T> implements java.io.Serializable{
 	}
 	
 	public void print() {
-		Nodo <Ficha> aux = (Nodo<Ficha>) this.getFirst();
+		Nodo <T> aux = (Nodo<T>) this.getFirst();
 		while (aux != null) {
-			System.out.println(aux.getData().getLetra());
+			System.out.println(aux.getData());
 			aux = aux.getNext();}
 		
 	}

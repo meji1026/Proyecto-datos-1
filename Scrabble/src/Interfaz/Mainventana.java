@@ -48,4 +48,7 @@ public class Mainventana extends JFrame implements ActionListener{
         	return this.tablero;
         }
 
+    	public static void main(String args[]) {
+    		new Mainventana();
+    	}
 }
