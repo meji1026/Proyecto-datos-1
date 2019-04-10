@@ -47,12 +47,7 @@ public class Interfaz extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		//getSource devuelve la fuente del evento, es decir devuelve la variable o el objeto que esta ejecuenta algun evento
 		//por ejemplo devuelve el boton que se esta presionando para que se ejecute un evento especifico
-		if(e.getSource() == boton1) {
-			this.cliente.setLista(lista);
-		}
-		if(e.getSource() == boton2) {
-			this.cliente.setLista(lista2);
-		}	
+		
 	}
 		
 }

@@ -6,14 +6,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import socketServer.Client;
+
 public class Mainventana extends JFrame implements ActionListener{
 	private Tablero tablero;
 	public Mainventana() {
+		
+    	
+    	
 		setSize(600, 700);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
-		
 		
 		ImageIcon vent = new ImageIcon("src/Interfaz/images/ventana.png");
 		ImageIcon icono = new ImageIcon("src/Interfaz/images/Icono.png");
@@ -25,6 +29,11 @@ public class Mainventana extends JFrame implements ActionListener{
 		
 		
 		setVisible(true);
+		
+		
+		
+		
+		
 
 		JButton butt = new JButton();
 		butt.setText("Play");
@@ -50,5 +59,7 @@ public class Mainventana extends JFrame implements ActionListener{
 
     	public static void main(String args[]) {
     		new Mainventana();
+    		Client cliente = Client.getInstance();
+        	cliente.start();
     	}
 }

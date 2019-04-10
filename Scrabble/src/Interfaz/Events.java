@@ -8,8 +8,10 @@ import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
 import Entidades.Jugador;
+import socketServer.Client;
 
 public class Events implements MouseListener {
+	
 	public void mousePressed(MouseEvent e) {
 		Jugador j = Jugador.getInstance();
 		JComponent c = (JComponent) e.getSource();
@@ -17,6 +19,7 @@ public class Events implements MouseListener {
 		handler.exportAsDrag(c, e, TransferHandler.COPY);
 		j.pos = c.getName();
 		j.agregar_letra(j.letra, j.pos);
+		
 		
 		
 		System.out.println(c.getName());

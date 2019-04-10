@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
+import Entidades.Ficha;
 import Interfaz.Mainventana;
 import palabras.Letra;
 import palabras.validacion;
@@ -30,7 +31,7 @@ public class Server {
 		
 		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
 		
-		private Mainventana ventana;
+
 		
 		private ObjectOutputStream salida2;
 		
@@ -41,8 +42,7 @@ public class Server {
         	//se crea el servidor
 			server = new ServerSocket(port);
 			 
-			this.ventana = new Mainventana();
-    		//se pone a escuchar al servidor 
+	
 			
         while (true) { 
         	
@@ -64,7 +64,7 @@ public class Server {
                
                 salida2 = new ObjectOutputStream(socket.getOutputStream());
                 
-                salida2.writeObject(this.ventana.getTablero());
+                
                 
                 
                 //hilo que se encarga de la conexcion servidor-cliente
@@ -123,7 +123,7 @@ class ClientHandler extends Thread  {
         int puntaje;
         
         //guarda el json en un arraylist al ser deserializado
-        ArrayList<Letra> listWord;
+        ArrayList<Ficha> listWord;
         
         //string que guarda la informacion que sera enviada al cliente
         String toreturn;

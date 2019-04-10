@@ -4,6 +4,7 @@ import java.io.*;
 import java.net.Socket;
 import java.util.Properties;
 
+import Entidades.Ficha;
 import Interfaz.Tablero;
 import estructurasDeDatos.ListaEnlazadaSimple;
 import palabras.Letra;
@@ -11,8 +12,11 @@ import serializador.Serializador;
 
  //clase cliente
 public class Client  {
-
+	private Client() {
 		
+	}
+
+		private static Client cliente = new Client();
 		//canal por donde el cliente recibe y envia informacion
 		private Socket client;
 		
@@ -83,7 +87,7 @@ public class Client  {
     }
     
     
-    public void setLista(ListaEnlazadaSimple <Letra> lista) {
+    public void setLista(ListaEnlazadaSimple<Ficha> lista) {
     	this.hilo.setLista(lista);
     }
        
@@ -124,6 +128,13 @@ public class Client  {
     	
     	cliente.start();    	
     }
+
+
+	public static Client getInstance() {
+		
+		
+		return cliente;
+	}
 }
 
 
@@ -152,7 +163,7 @@ class ClientThread extends Thread{
   		private boolean terminaJuego = false;
   		
   		//lista enlazada que contiene la palabra que sera enviada al servidor
-  		private ListaEnlazadaSimple <Letra> lista;
+  		private ListaEnlazadaSimple<Ficha> lista;
   		
   		//boolean que indica si el cliente ya recibio las letras del servidor
   		private boolean letras = false;
@@ -168,13 +179,7 @@ class ClientThread extends Thread{
 	 public  void run()   { 
 	        try{
 	        	//indica que si el cliente no ha recibido las letras del servidor aun no puede enviar palabras
-	        	if(letras == false) {
-	        		this.tablero = (Tablero) entrada2.readObject();
-	        		tablero.setVisible(true);
-	        		this.letras = true;
-	        	}
-				
-	        	if(letras==true){
+	        
 		            while (terminaJuego == false)  {
 		            	
 		            	//string que guarda el json que sera enviado
@@ -213,7 +218,7 @@ class ClientThread extends Thread{
 		            this.entrada.close(); 
 		            this.salida.close();
 		            this.stop();
-	        	}
+	        	
 	            
 	 
 	        }
@@ -225,8 +230,8 @@ class ClientThread extends Thread{
 	    }
 	 
 	 
-	 public void setLista(ListaEnlazadaSimple <Letra> lista) {
-	    	this.lista = lista;
+	 public void setLista(ListaEnlazadaSimple<Ficha> lista2) {
+	    	this.lista = lista2;
 	    	this.palabra = true;
 	    }
 }

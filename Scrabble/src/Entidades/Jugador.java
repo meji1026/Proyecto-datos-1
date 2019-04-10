@@ -5,25 +5,11 @@ import javax.swing.JPanel;
 
 import estructurasDeDatos.ListaEnlazadaSimple;
 
-public class Jugador {
+public class Jugador implements java.io.Serializable {
 	static Jugador j = new Jugador();
 	public String letra = "";
 	public String pos = "";
-	public static void setJ(Jugador j) {
-		Jugador.j = j;
-	}
-	public String getLetra() {
-		return letra;
-	}
-	public void setLetra(String letra) {
-		this.letra = letra;
-	}
-	public String getPos() {
-		return pos;
-	}
-	public void setPos(String pos) {
-		this.pos = pos;
-	}
+	
 	public String[][] getMatriz() {
 		return matriz;
 	}

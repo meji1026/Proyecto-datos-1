@@ -11,7 +11,7 @@ public class validacion {
 		String linea;
 		int numeroDeLinea = 1;
 		boolean contiene = false;
-	    File f = new File("Scrabble/resources/palabras.txt");
+	    File f = new File("C:\\Users\\abiga\\Desktop\\scrabble\\Scrabble\\resources\\palabras.txt");
 	    
 	    try {
 		    entrada = new Scanner(f);

@@ -56,25 +56,25 @@ public class Tablero extends JFrame{
 	public Tablero() {
 	}
 	
-	public void pintar() {
-		this.matriz = j.getMatriz();
-		for (int x=0; x < matriz.length; x++) {
-			
-			  for (int y=0; y < matriz[x].length; y++) {
-				  if(matriz[x][y]!=null) {
-			    for(int temp = 0; temp<listafichas.length; temp++) {
-			    	if(listafichas[temp].getLetra() == matriz[x][y]) {
-				  JLabel  aux = new JLabel(listafichas[temp].getImage());
-					aux.setBounds(y*49,x*50, 49, 50);
-					aux.setText(listafichas[temp].getLetra());
-					add(aux);
-					}
-			    }
-				  }
-			  }
-		}
-		
-	}
+//	public void pintar() {
+//		this.matriz = j.getMatriz();
+//		for (int x=0; x < matriz.length; x++) {
+//			
+//			  for (int y=0; y < matriz[x].length; y++) {
+//				  if(matriz[x][y]!=null) {
+//			    for(int temp = 0; temp<listafichas.length; temp++) {
+//			    	if(listafichas[temp].getLetra() == matriz[x][y]) {
+//				  JLabel  aux = new JLabel(listafichas[temp].());
+//					aux.setBounds(y*49,x*50, 49, 50);
+//					aux.setText(listafichas[temp].getLetra());
+//					add(aux);
+//					}
+//			    }
+//				  }
+//			  }
+//		}
+//		
+//	}
 
 
 	public void cargarTablero() {
@@ -1731,34 +1731,34 @@ public class Tablero extends JFrame{
 		
 		JLabel a,b,c,ch,d,e,f,g,h,i,j,l,ll,m,n,ñ,o,p,q,r,rr,s,t,u,v,x,y,z;
 
-		ImageIcon letra_a = A.getImage();
-		ImageIcon letra_b = B.getImage();
-		ImageIcon letra_c = C.getImage();
-		ImageIcon letra_ch = CH.getImage();
-		ImageIcon letra_d= D.getImage();
-		ImageIcon letra_e= E.getImage();
-		ImageIcon letra_f = F.getImage();
-		ImageIcon letra_g = G.getImage();
-		ImageIcon letra_h = H.getImage();
-		ImageIcon letra_i = I.getImage();
-		ImageIcon letra_j = J.getImage();
-		ImageIcon letra_l = L.getImage();
-		ImageIcon letra_ll = LL.getImage();
-		ImageIcon letra_m = M.getImage();
-		ImageIcon letra_n = N.getImage();
-		ImageIcon letra_ñ = Ñ.getImage();
-		ImageIcon letra_o = O.getImage();
-		ImageIcon letra_p = P.getImage();
-		ImageIcon letra_q = Q.getImage();
-		ImageIcon letra_r = R.getImage();
-		ImageIcon letra_rr = RR.getImage();
-		ImageIcon letra_s = S.getImage();
-		ImageIcon letra_t = T.getImage();
-		ImageIcon letra_u = U.getImage();
-		ImageIcon letra_v = V.getImage();
-		ImageIcon letra_x = X.getImage();
-		ImageIcon letra_y = Y.getImage();
-		ImageIcon letra_z = Z.getImage();
+//		ImageIcon letra_a = A.getImage();
+//		ImageIcon letra_b = B.getImage();
+//		ImageIcon letra_c = C.getImage();
+//		ImageIcon letra_ch = CH.getImage();
+//		ImageIcon letra_d= D.getImage();
+//		ImageIcon letra_e= E.getImage();
+//		ImageIcon letra_f = F.getImage();
+//		ImageIcon letra_g = G.getImage();
+//		ImageIcon letra_h = H.getImage();
+//		ImageIcon letra_i = I.getImage();
+//		ImageIcon letra_j = J.getImage();
+//		ImageIcon letra_l = L.getImage();
+//		ImageIcon letra_ll = LL.getImage();
+//		ImageIcon letra_m = M.getImage();
+//		ImageIcon letra_n = N.getImage();
+//		ImageIcon letra_ñ = Ñ.getImage();
+//		ImageIcon letra_o = O.getImage();
+//		ImageIcon letra_p = P.getImage();
+//		ImageIcon letra_q = Q.getImage();
+//		ImageIcon letra_r = R.getImage();
+//		ImageIcon letra_rr = RR.getImage();
+//		ImageIcon letra_s = S.getImage();
+//		ImageIcon letra_t = T.getImage();
+//		ImageIcon letra_u = U.getImage();
+//		ImageIcon letra_v = V.getImage();
+//		ImageIcon letra_x = X.getImage();
+//		ImageIcon letra_y = Y.getImage();
+//		ImageIcon letra_z = Z.getImage();
 
 /*
 		a = new JLabel(letra_a);
@@ -1934,7 +1934,7 @@ public class Tablero extends JFrame{
 		
 		ImageIcon letra_1;
 		int random1 = (int)(Math.random() * 99);
-		letra_1 = listafichas[random1].getImage();
+		letra_1 = new ImageIcon( listafichas[random1].getPath());
 		JLabel le1 = new JLabel(letra_1);
 		le1.setBounds(900,100, 49, 50);
 		le1.setText(listafichas[random1].getLetra());
@@ -1943,60 +1943,60 @@ public class Tablero extends JFrame{
 		
 		ImageIcon letra_2;
 		int random2 = (int)(Math.random() * 99);
-		letra_2 = listafichas[random2].getImage();
+		letra_2 = new ImageIcon(listafichas[random2].getPath());
 		JLabel le2 = new JLabel(letra_2);
 		le2.setBounds(900,150, 49, 50);
 		le2.setText(listafichas[random2].getLetra());
 		add(le2);
 		
-		ImageIcon letra_3;
-		int random3 = (int)(Math.random() *99);
-		letra_3 = listafichas[random3].getImage();
-		JLabel le3 = new JLabel(letra_3);
-		le3.setBounds(900,200, 49, 50);
-		le3.setText(listafichas[random3].getLetra());
-		add(le3);
-		
-		
-		ImageIcon letra_4;
-		int random4 = (int)(Math.random() * 99);
-		letra_4 = listafichas[random4].getImage();
-		JLabel le4 = new JLabel(letra_4);
-		le4.setBounds(196,812, 49, 50);
-		le4.setText(listafichas[random4].getLetra());
-		add(le4);
-		
-		ImageIcon letra_5;
-		int random5 = (int)(Math.random() * 99);
-		letra_5 = listafichas[random5].getImage();
-		JLabel le5 = new JLabel(letra_5);
-		le5.setBounds(256,812, 49, 50);
-		le5.setText(listafichas[random5].getLetra());
-		add(le5);
-		
-		ImageIcon letra_6;
-		int random6 = (int)(Math.random() * 99);
-		letra_6 = listafichas[random6].getImage();
-		JLabel le6 = new JLabel(letra_6);
-		le6.setBounds(316,812, 49, 50);
-		le6.setText(listafichas[random6].getLetra());
-		add(le6);
-		
-		ImageIcon letra_7;
-		int random7 = (int)(Math.random() * 99);
-		letra_7 = listafichas[random7].getImage();
-		JLabel le7 = new JLabel(letra_7);
-		le7.setBounds(376,812, 49, 50);
-		le7.setText(listafichas[random7].getLetra());
-		add(le7);
-		
-		ImageIcon letra_8;
-		int random8 = (int)(Math.random() * 99);
-		letra_8 = listafichas[random8].getImage();
-		JLabel le8 = new JLabel(letra_8);
-		le8.setBounds(430,812, 49, 50);
-		le8.setText(listafichas[random8].getLetra());
-		add(le8);
+//		ImageIcon letra_3;
+//		int random3 = (int)(Math.random() *99);
+//		letra_3 = listafichas[random3].getImage();
+//		JLabel le3 = new JLabel(letra_3);
+//		le3.setBounds(900,200, 49, 50);
+//		le3.setText(listafichas[random3].getLetra());
+//		add(le3);
+//		
+//		
+//		ImageIcon letra_4;
+//		int random4 = (int)(Math.random() * 99);
+//		letra_4 = listafichas[random4].getImage();
+//		JLabel le4 = new JLabel(letra_4);
+//		le4.setBounds(196,812, 49, 50);
+//		le4.setText(listafichas[random4].getLetra());
+//		add(le4);
+//		
+//		ImageIcon letra_5;
+//		int random5 = (int)(Math.random() * 99);
+//		letra_5 = listafichas[random5].getImage();
+//		JLabel le5 = new JLabel(letra_5);
+//		le5.setBounds(256,812, 49, 50);
+//		le5.setText(listafichas[random5].getLetra());
+//		add(le5);
+//		
+//		ImageIcon letra_6;
+//		int random6 = (int)(Math.random() * 99);
+//		letra_6 = listafichas[random6].getImage();
+//		JLabel le6 = new JLabel(letra_6);
+//		le6.setBounds(316,812, 49, 50);
+//		le6.setText(listafichas[random6].getLetra());
+//		add(le6);
+//		
+//		ImageIcon letra_7;
+//		int random7 = (int)(Math.random() * 99);
+//		letra_7 = listafichas[random7].getImage();
+//		JLabel le7 = new JLabel(letra_7);
+//		le7.setBounds(376,812, 49, 50);
+//		le7.setText(listafichas[random7].getLetra());
+//		add(le7);
+//		
+//		ImageIcon letra_8;
+//		int random8 = (int)(Math.random() * 99);
+//		letra_8 = listafichas[random8].getImage();
+//		JLabel le8 = new JLabel(letra_8);
+//		le8.setBounds(430,812, 49, 50);
+//		le8.setText(listafichas[random8].getLetra());
+//		add(le8);
 
 		/**
 		System.out.println(listafichas[random1].getLetra());
@@ -2011,12 +2011,12 @@ public class Tablero extends JFrame{
 		DragMouseAdapter listener = new DragMouseAdapter();
 		le1.addMouseListener((listener));
 		le2.addMouseListener((listener));
-		le3.addMouseListener((listener));
-		le4.addMouseListener((listener));
-		le5.addMouseListener((listener));
-		le6.addMouseListener((listener));
-		le7.addMouseListener((listener));
-		le8.addMouseListener((listener));
+//		le3.addMouseListener((listener));
+//		le4.addMouseListener((listener));
+//		le5.addMouseListener((listener));
+//		le6.addMouseListener((listener));
+//		le7.addMouseListener((listener));
+//		le8.addMouseListener((listener));
 		
 		
 		
@@ -2053,108 +2053,108 @@ public class Tablero extends JFrame{
 		        return COPY | MOVE;
 		    }
 		});
-		le3.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
-		le4.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
-		le5.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
-		le6.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
-		le7.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
-		le8.setTransferHandler(new TransferHandler("icon"){
-		    @Override
-		    protected void exportDone(JComponent source, Transferable data, int action) {
-		        if (action == MOVE){
-		        	((JLabel) source).setIcon(null);
-		            ((JLabel) source).addMouseListener(null);
-		            ((JLabel) source).setText("");
-		            flag1 = true;
-		            cargarTablero();
-		        }
-		    }
-
-		    @Override
-		    public int getSourceActions(JComponent c) {
-		        return COPY | MOVE;
-		    }
-		});
+//		le3.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+//		});
+//		le4.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+//		});
+//		le5.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+//		});
+//		le6.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+//		});
+//		le7.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+//		});
+//		le8.setTransferHandler(new TransferHandler("icon"){
+//		    @Override
+//		    protected void exportDone(JComponent source, Transferable data, int action) {
+//		        if (action == MOVE){
+//		        	((JLabel) source).setIcon(null);
+//		            ((JLabel) source).addMouseListener(null);
+//		            ((JLabel) source).setText("");
+//		            flag1 = true;
+//		            cargarTablero();
+//		        }
+//		    }
+//
+//		    @Override
+//		    public int getSourceActions(JComponent c) {
+//		        return COPY | MOVE;
+//		    }
+	//	});
 		
 		
 		
