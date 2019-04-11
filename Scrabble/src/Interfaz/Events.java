@@ -22,7 +22,7 @@ public class Events implements MouseListener {
 		j.pos = c.getName();
 		j.agregar_letra(j.letra, j.pos);
 		j.palabra.addLast(new Ficha(j.letra,j.pos));
-		
+		j.letra="null";
 		
 		
 		System.out.println(c.getName());

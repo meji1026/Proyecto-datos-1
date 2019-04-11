@@ -12,7 +12,7 @@ import serializador.Serializador;
 //clase servidor
 public class Server {
 	
-	static String matriz[][] = new String[15][15];
+	private static String matriz[][] = new String[15][15];
 	
 		//es el servidor
 		private ServerSocket server;
@@ -84,6 +84,14 @@ public class Server {
 	public static void main(String args[]) {
 		Server server = new Server();
 		server.start();
+	}
+
+	public static String[][] getMatriz() {
+		return matriz;
+	}
+
+	public static void setMatriz(String matriz[][]) {
+		Server.matriz = matriz;
 	}
 	
 }
@@ -184,25 +192,26 @@ class ClientHandler extends Thread  {
                 	for(int i = 0; i<listWord.size()-1;i++) {
                 		String pos = listWord.get(i).getPos();
                 		String letra = listWord.get(i).getLetra();
-                		
+                		if(listWord.get(i).getValor() != 0) {
 						if(pos.length()==2) {
-                			Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1)))] = letra;
+                			Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1)))] = letra;
                 			}else if (pos.length()==3){
-                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1))+Character.toString(pos.charAt(2)))] = letra;
+                				Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1))+Character.toString(pos.charAt(2)))] = letra;
                 			}
                 			else if (pos.length()==4){
-                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2))+Character.toString(pos.charAt(3)))] = letra;
+                				Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2))+Character.toString(pos.charAt(3)))] = letra;
                 			}else if (pos.length()==5){
-                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2)))] = letra;
+                				Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2)))] = letra;
                 			}
+                		}
 						
                 		
                 	}
-                	for (int x=0; x < Server.matriz.length; x++) {
+                	for (int x=0; x < Server.getMatriz().length; x++) {
 						  System.out.print("|");
-						  for (int y=0; y < Server.matriz[x].length; y++) {
-						    System.out.print (Server.matriz[x][y]);
-						    if (y!=Server.matriz[x].length-1) System.out.print("\t");
+						  for (int y=0; y < Server.getMatriz()[x].length; y++) {
+						    System.out.print (Server.getMatriz()[x][y]);
+						    if (y!=Server.getMatriz()[x].length-1) System.out.print("\t");
 						  }
 						  System.out.println("|");
 						}

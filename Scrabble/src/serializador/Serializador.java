@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Entidades.Ficha;
 import estructurasDeDatos.ListaEnlazadaSimple;
 import estructurasDeDatos.Nodo;
+import socketServer.Server;
 
 
 public class Serializador {
@@ -51,10 +52,30 @@ public class Serializador {
 		int contador = 0;
 		String word = "";
 		while(contador < palabra.size()-1) {
+			
+			if(palabra.get(contador).getValor() == 0) {
+				System.out.println("Hola");
+				String pos = palabra.get(contador).getPos();
+				if(pos.length()==2) {
+					word = word + Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1)))] ;
+					}else if (pos.length()==3){
+						word = word + Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1))+Character.toString(pos.charAt(2)))] ;
+					}
+					else if (pos.length()==4){
+						word = word + Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2))+Character.toString(pos.charAt(3)))] ;
+					}else if (pos.length()==5){
+						word = word + Server.getMatriz()[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2)))];
+					}
+				
+	
+			}else {
 			word = word + palabra.get(contador).getLetra();
+			}
 			contador++;
 		}
 		return word;
+			
+		
 	}
 	
 	

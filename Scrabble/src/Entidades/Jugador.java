@@ -5,8 +5,9 @@ import estructurasDeDatos.ListaEnlazadaSimple;
 
 public class Jugador{
 	static Jugador j = new Jugador();
-	public String letra = "";
+	public String letra="null";
 	public String pos = "";
+	public int puntaje = 0;
 	
 	public String[][] getMatriz() {
 		return matriz;
