@@ -9,6 +9,7 @@ import javax.swing.*;
 import socketServer.Client;
 
 public class Mainventana extends JFrame implements ActionListener{
+
 	private Tablero tablero;
 	public Mainventana() {
 		

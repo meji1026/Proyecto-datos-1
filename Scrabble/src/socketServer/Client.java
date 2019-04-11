@@ -7,7 +7,6 @@ import java.util.Properties;
 import Entidades.Ficha;
 import Interfaz.Tablero;
 import estructurasDeDatos.ListaEnlazadaSimple;
-import palabras.Letra;
 import serializador.Serializador;
 
  //clase cliente
@@ -19,6 +18,8 @@ public class Client  {
 		private static Client cliente = new Client();
 		//canal por donde el cliente recibe y envia informacion
 		private Socket client;
+		
+		static Object matriz = new String[15][15];
 		
 		//numero de puerto en donde se realiza la conexion cliente-servidor
 		private int port;
@@ -91,43 +92,6 @@ public class Client  {
     	this.hilo.setLista(lista);
     }
        
-    //metodo main para probar el cliente
-    public static void main(String args[]) {
-    	
-    	ListaEnlazadaSimple <Letra> l = new ListaEnlazadaSimple<Letra>();
-		l.addLast(new Letra("S"));
-		l.addLast(new Letra("C"));
-		l.addLast(new Letra("R"));
-		l.addLast(new Letra("A"));
-		l.addLast(new Letra("B"));
-		l.addLast(new Letra("B"));
-		l.addLast(new Letra("L"));
-		l.addLast(new Letra("E"));
-		
-		
-		ListaEnlazadaSimple <Letra> l2 = new ListaEnlazadaSimple<Letra>();
-		l2.addLast(new Letra("A"));
-		l2.addLast(new Letra("N"));
-		l2.addLast(new Letra("I"));
-		l2.addLast(new Letra("M"));
-		l2.addLast(new Letra("A"));
-		l2.addLast(new Letra("L"));
-		
-		
-    	Client cliente = new Client();
-    	
-    	Interfaz interfaz = new Interfaz(cliente,l,l2);
-		//se indica la coordenadas donde estara ubicado el objeto, su ancho y su altura
-		interfaz.setBounds(0,0,400,400);
-		//hace que sea visible en pantalla
-		interfaz.setVisible(true);
-		//indica que la interfaz va a estar en el centro de la pantalla sin importar las coordenas inidicadas anteriormente
-		interfaz.setLocationRelativeTo(null);
-		//al indicar false indica que no se puede modificar el tamano de la interfaz una vez creada
-		interfaz.setResizable(false);
-    	
-    	cliente.start();    	
-    }
 
 
 	public static Client getInstance() {
@@ -181,6 +145,10 @@ class ClientThread extends Thread{
 	        	//indica que si el cliente no ha recibido las letras del servidor aun no puede enviar palabras
 	        
 		            while (terminaJuego == false)  {
+		            	if(turno == false) {
+		            		Client.matriz = entrada2.readObject();
+		            		tablero.pintar((String[][]) Client.matriz);
+		            	}
 		            	
 		            	//string que guarda el json que sera enviado
 		            	String tosend;
@@ -193,6 +161,7 @@ class ClientThread extends Thread{
 		                	
 		                	// envia el json(tosend) al servidor
 		                	salida.writeUTF(tosend);
+		                	
 		                	
 		                	//recive el string enviado por el servidor
 		                	String received = entrada.readUTF();

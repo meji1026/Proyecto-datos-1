@@ -3,7 +3,6 @@ package Interfaz;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import estructurasDeDatos.ListaEnlazadaSimple;
-import palabras.Letra;
 import socketServer.Client;
 
 import javax.swing.JComponent;
@@ -23,10 +22,11 @@ public class DragMouseAdapter extends MouseAdapter{
 		JComponent c = (JComponent) e.getSource();
 		if(c.getName() == "button1") {
 			
-			jugador.enviar_palabra();
 			
-			System.out.println(lista.getLen());
-			cliente.setLista(lista);
+			
+			System.out.println(jugador.palabra.getLen());
+			cliente.setLista(jugador.palabra);
+			jugador.enviar_palabra();
 
 	}else {
 		JLabel j = (JLabel) e.getSource();
@@ -35,7 +35,7 @@ public class DragMouseAdapter extends MouseAdapter{
 		//System.out.println(j.getText());
 		Ficha auxFicha = new Ficha(j.getText());
 		jugador.letra = auxFicha.getLetra();
-		lista.addLast(new Ficha(jugador.letra));
+		
 		System.out.println(auxFicha.getLetra());
 		//lista.addLast(auxFicha);
 		}

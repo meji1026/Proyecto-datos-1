@@ -5,14 +5,14 @@ import java.net.*;
 import java.util.ArrayList;
 
 import Entidades.Ficha;
-import Interfaz.Mainventana;
-import palabras.Letra;
 import palabras.validacion;
 import serializador.Serializador;
 
   
 //clase servidor
 public class Server {
+	
+	static String matriz[][] = new String[15][15];
 	
 		//es el servidor
 		private ServerSocket server;
@@ -29,7 +29,6 @@ public class Server {
 		//indica que la entrada es el input del canal de la informacion, es decir es lo que recibe el servidor y en este caso es un objeto
 		private DataInputStream  entrada;
 		
-		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
 		
 
 		
@@ -128,7 +127,7 @@ class ClientHandler extends Thread  {
         //string que guarda la informacion que sera enviada al cliente
         String toreturn;
         
-        //logger para regiistrar errores
+        
        
         
         //ciclo que maneja la logica de la informacion recibida y enviada
@@ -155,6 +154,8 @@ class ClientHandler extends Thread  {
                 //deseraliza el json recibido  y lo guarda en listWord como un arraylist
                 listWord = Serializador.deserializar(received);
                 
+                
+                
                 //obtiene la palabra guarda en el arraylist de listword
                 word = Serializador.palabra(listWord);
                 
@@ -171,7 +172,6 @@ class ClientHandler extends Thread  {
                 
                 //print en pantalla que indica que se va a mostrar la palabra
                 System.out.println("AL DESEREALIZAR EL JSON SE OBTIENE LA SIGUIENTE PALABRA:");
-                System.out.println("");
                 
                 //imprimen la palaba obtenida al deserealizar el json recibido
                 System.out.println(word);
@@ -180,6 +180,32 @@ class ClientHandler extends Thread  {
                 //verifica si la palabra recibida del cliente se encuentra en el diccionario de palabras
                 if(validacion.validarPalabra(word)==true) {
                 	toreturn = "La palabra enviada es valida y tiene un puntaje de: " + puntaje;
+                	
+                	for(int i = 0; i<listWord.size()-1;i++) {
+                		String pos = listWord.get(i).getPos();
+                		String letra = listWord.get(i).getLetra();
+                		
+						if(pos.length()==2) {
+                			Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1)))] = letra;
+                			}else if (pos.length()==3){
+                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0)))][Integer.parseInt(Character.toString(pos.charAt(1))+Character.toString(pos.charAt(2)))] = letra;
+                			}
+                			else if (pos.length()==4){
+                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2))+Character.toString(pos.charAt(3)))] = letra;
+                			}else if (pos.length()==5){
+                				Server.matriz[Integer.parseInt(Character.toString(pos.charAt(0))+Character.toString(pos.charAt(1)))][Integer.parseInt(Character.toString(pos.charAt(2)))] = letra;
+                			}
+						
+                		
+                	}
+                	for (int x=0; x < Server.matriz.length; x++) {
+						  System.out.print("|");
+						  for (int y=0; y < Server.matriz[x].length; y++) {
+						    System.out.print (Server.matriz[x][y]);
+						    if (y!=Server.matriz[x].length-1) System.out.print("\t");
+						  }
+						  System.out.println("|");
+						}
                 	salida.writeUTF(toreturn);
                 }
                 

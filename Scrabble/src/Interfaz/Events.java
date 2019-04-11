@@ -7,18 +7,21 @@ import java.awt.event.MouseListener;
 import javax.swing.JComponent;
 import javax.swing.TransferHandler;
 
+import Entidades.Ficha;
 import Entidades.Jugador;
-import socketServer.Client;
 
 public class Events implements MouseListener {
 	
 	public void mousePressed(MouseEvent e) {
+		
 		Jugador j = Jugador.getInstance();
+	
 		JComponent c = (JComponent) e.getSource();
 		TransferHandler handler = c.getTransferHandler();
 		handler.exportAsDrag(c, e, TransferHandler.COPY);
 		j.pos = c.getName();
 		j.agregar_letra(j.letra, j.pos);
+		j.palabra.addLast(new Ficha(j.letra,j.pos));
 		
 		
 		

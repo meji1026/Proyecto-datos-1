@@ -1,11 +1,9 @@
 package Entidades;
 
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import estructurasDeDatos.ListaEnlazadaSimple;
 
-public class Jugador implements java.io.Serializable {
+
+public class Jugador{
 	static Jugador j = new Jugador();
 	public String letra = "";
 	public String pos = "";
@@ -16,10 +14,10 @@ public class Jugador implements java.io.Serializable {
 	public void setMatriz(String[][] matriz) {
 		this.matriz = matriz;
 	}
-	public ListaEnlazadaSimple<String> getPalabra() {
+	public ListaEnlazadaSimple<Ficha> getPalabra() {
 		return palabra;
 	}
-	public void setPalabra(ListaEnlazadaSimple<String> palabra) {
+	public void setPalabra(ListaEnlazadaSimple<Ficha> palabra) {
 		this.palabra = palabra;
 	}
 	private Jugador() {
@@ -29,7 +27,8 @@ public class Jugador implements java.io.Serializable {
 		return j;
 	}
 	public String matriz[][] = new String[15][15];
-	private  ListaEnlazadaSimple<String> palabra = new ListaEnlazadaSimple<String>(); 
+	public  ListaEnlazadaSimple<Ficha> palabra = new ListaEnlazadaSimple<Ficha>();
+	
 	
 	public void agregar_letra(String letra, String pos) {
 		if(pos.length()==2) {
@@ -43,7 +42,7 @@ public class Jugador implements java.io.Serializable {
 			j.matriz[Integer.parseInt(Character.toString(j.pos.charAt(0))+Character.toString(j.pos.charAt(1)))][Integer.parseInt(Character.toString(j.pos.charAt(2)))] = j.letra;
 		}
 	
-		palabra.addLast(letra);
+		
 		
 		
 	}
@@ -57,5 +56,6 @@ public class Jugador implements java.io.Serializable {
 			  }
 			  System.out.println("|");
 			}
+		j.palabra = new ListaEnlazadaSimple<Ficha>();
 	}
 }
