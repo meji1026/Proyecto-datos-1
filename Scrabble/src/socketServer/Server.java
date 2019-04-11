@@ -14,6 +14,8 @@ public class Server {
 	
 	private static String matriz[][] = new String[15][15];
 	
+	public static int cantJugadores = 2;
+	
 		//es el servidor
 		private ServerSocket server;
 		
@@ -30,7 +32,7 @@ public class Server {
 		private DataInputStream  entrada;
 		
 		
-
+		int clientID;
 		
 		private ObjectOutputStream salida2;
 		
@@ -63,7 +65,7 @@ public class Server {
                
                 salida2 = new ObjectOutputStream(socket.getOutputStream());
                 
-                
+                clientID++;
                 
                 
                 //hilo que se encarga de la conexcion servidor-cliente
@@ -107,14 +109,20 @@ class ClientHandler extends Thread  {
     
     //canal por donde se envia y se recibe la informacion
     private Socket socket; 
+    
+    private int clientID;
+    private ObjectOutputStream salida2;
       
   
+    
     // Constructor 
     public ClientHandler(Socket socket, DataInputStream entrada, DataOutputStream salida)  
     { 
         this.socket = socket; 
         this.entrada = entrada; 
         this.salida = salida; 
+        this.clientID = clientID;
+        this.salida2 = salida2;
     } 
   
     @Override
@@ -141,6 +149,11 @@ class ClientHandler extends Thread  {
         //ciclo que maneja la logica de la informacion recibida y enviada
 		while (true)  { 
             try {
+            	if(Server.cantJugadores == 0) {
+            		Server.cantJugadores = 2;
+            	}
+            	if(clientID == Server.cantJugadores) {
+            		salida2.writeObject(Server.getMatriz());
             	
                 //lee y guarda la informacion enviada por el cliente que en este caso es un json
                 received = entrada.readUTF();
@@ -216,13 +229,16 @@ class ClientHandler extends Thread  {
 						  System.out.println("|");
 						}
                 	salida.writeUTF(toreturn);
+                	Server.cantJugadores--;
                 }
                 
                 //verifica si la palabra recibida del cliente se encuentra en el diccionario de palabras
                 if(validacion.validarPalabra(word)==false) {
                 	toreturn = "La palabra enviada es invalida";
                 	salida.writeUTF(toreturn);
+                	Server.cantJugadores--;
                 }
+            	}
             }    
             catch (IOException e) { 
             	System.out.println(e.getMessage());

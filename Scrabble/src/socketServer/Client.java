@@ -41,7 +41,7 @@ public class Client  {
 		// tipo logger que sirve para imprimir los errores en consola y guardarlos en un archivo para gestionar los errores del programa
 		
 		
-		public ClientThread hilo;
+		private ClientThread hilo;
 		
 	//metodo que inicia el cliente
     public  void start()   { 
@@ -96,7 +96,6 @@ public class Client  {
 
 	public static Client getInstance() {
 		
-		
 		return cliente;
 	}
 }
@@ -118,7 +117,7 @@ class ClientThread extends Thread{
     private Tablero tablero;
     
   //boolean que define si es el turno de este cliente
-  		private boolean turno = true;
+  		private boolean turno = false;
   		
   		//boolean que define si el cliente tiene alguna palabra(lista) asociada para que pueda ser enviada al servidor
   		private boolean palabra = false;
@@ -129,9 +128,6 @@ class ClientThread extends Thread{
   		//lista enlazada que contiene la palabra que sera enviada al servidor
   		private ListaEnlazadaSimple<Ficha> lista;
   		
-  		//boolean que indica si el cliente ya recibio las letras del servidor
-  		private boolean letras = false;
-
     
 	public ClientThread( Socket socket, DataInputStream entrada,ObjectInputStream entrada2, DataOutputStream salida) {
 		this.client = socket;
@@ -142,15 +138,15 @@ class ClientThread extends Thread{
 	
 	 public  void run()   { 
 	        try{
-	        	//indica que si el cliente no ha recibido las letras del servidor aun no puede enviar palabras
-	        
 		            while (terminaJuego == false)  {
-		            	if(turno == false) {
-		            		Client.matriz = entrada2.readObject();
+		            	if(turno == false && entrada.readUTF().equals("turno") == true) {
+		            		System.out.println("Es el turno de este cliente");
+		            		Client.matriz = (String [][])entrada2.readObject();
 		            		tablero.pintar((String[][]) Client.matriz);
+		            		this.turno=true;
 		            	}
-		            	
 		            	//string que guarda el json que sera enviado
+		            	
 		            	String tosend;
 		            	
 		            	//esto se cumple cuando sea el turno del jugador y cuando el cliente tenga una lista(palabra) asociada
