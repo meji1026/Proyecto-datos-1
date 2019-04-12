@@ -3,6 +3,7 @@ package estructurasDeDatos;
 import Entidades.Ficha;
 
 public class ListaEnlazadaSimple <T> implements java.io.Serializable{
+	
 	private int len;
 	private Nodo <T> first;
 
