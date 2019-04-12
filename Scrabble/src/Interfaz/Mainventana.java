@@ -53,7 +53,7 @@ public class Mainventana extends JFrame implements ActionListener{
                 this.tablero.cargarTablero();
                 this.tablero.setVisible(true);
                 Client cliente = Client.getInstance();
-            	cliente.start();
+                cliente.start();
             }
         
         public Tablero getTablero() {

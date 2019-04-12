@@ -14,7 +14,7 @@ public class Server {
 	
 	private static String matriz[][] = new String[15][15];
 	
-	public static int cantJugadores = 2;
+	public static int cantJugadores = 1;
 	
 		//es el servidor
 		private ServerSocket server;
@@ -65,11 +65,11 @@ public class Server {
                
                 salida2 = new ObjectOutputStream(socket.getOutputStream());
                 
-                clientID++;
+                clientID=1;
                 
                 
                 //hilo que se encarga de la conexcion servidor-cliente
-                Thread hilo = new ClientHandler(socket, entrada, salida); 
+                Thread hilo = new ClientHandler(socket, entrada, salida,salida2,clientID); 
   
                 //se inicia el hilo
                 hilo.start();      
@@ -116,7 +116,7 @@ class ClientHandler extends Thread  {
   
     
     // Constructor 
-    public ClientHandler(Socket socket, DataInputStream entrada, DataOutputStream salida)  
+    public ClientHandler(Socket socket, DataInputStream entrada, DataOutputStream salida,ObjectOutputStream salida2,int clientID)  
     { 
         this.socket = socket; 
         this.entrada = entrada; 
@@ -150,10 +150,10 @@ class ClientHandler extends Thread  {
 		while (true)  { 
             try {
             	if(Server.cantJugadores == 0) {
-            		Server.cantJugadores = 2;
+            		Server.cantJugadores = 1;
             	}
             	if(clientID == Server.cantJugadores) {
-            		salida2.writeObject(Server.getMatriz());
+            		salida.writeUTF("turno");
             	
                 //lee y guarda la informacion enviada por el cliente que en este caso es un json
                 received = entrada.readUTF();
