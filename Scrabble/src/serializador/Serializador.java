@@ -16,6 +16,18 @@ import socketServer.Server;
 
 
 public class Serializador {
+	/**
+
+ * Esta clase se encarga del manejo de la serializacion de Json
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	static ObjectMapper mapper = new ObjectMapper();
 	
 	public static <T> String serializar( ListaEnlazadaSimple<T> Lista) throws IOException {
