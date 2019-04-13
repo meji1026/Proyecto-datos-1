@@ -14,6 +14,18 @@ import estructurasDeDatos.ListaEnlazadaSimple;
 
 
 public class Tablero extends JFrame{	
+	/**
+
+ * Esta clase se encarga de manejar el tablero y las fichas en este
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	private String matriz[][] =new String[15][15];
 	Jugador j = Jugador.getInstance();
 	
@@ -35,7 +47,7 @@ public class Tablero extends JFrame{
 		Ficha LL = new Ficha("LL");
 		Ficha M = new Ficha("M");
 		Ficha N = new Ficha("N");
-		Ficha Ñ = new Ficha("Ñ");
+		Ficha Ã‘ = new Ficha("Ã‘");
 		Ficha O = new Ficha("O");
 		Ficha P = new Ficha("P");
 		Ficha Q = new Ficha("Q");
@@ -50,13 +62,25 @@ public class Tablero extends JFrame{
 		Ficha Z = new Ficha("Z");
 		Ficha Blanca = new Ficha("");
 
-	private Ficha[] listafichas = {A,A,A,A,A,A,A,A,A,A,A,A,B,B,C,C,C,C,CH,D,D,D,D,D,E,E,E,E,E,E,E,E,E,E,E,E,F,G,G,H,H,I,I,I,I,I,I,J,L,L,L,L,LL,M,M,N,N,N,N,N,Ñ,O,O,O,O,O,O,O,O,O,
+	private Ficha[] listafichas = {A,A,A,A,A,A,A,A,A,A,A,A,B,B,C,C,C,C,CH,D,D,D,D,D,E,E,E,E,E,E,E,E,E,E,E,E,F,G,G,H,H,I,I,I,I,I,I,J,L,L,L,L,LL,M,M,N,N,N,N,N,Ã‘,O,O,O,O,O,O,O,O,O,
 			P,P,Q,R,R,R,R,R,RR,S,S,S,S,S,S,T,T,T,T,U,U,U,U,U,V,X,Y,Z,Blanca,Blanca};
 	
 	public Tablero() {
 	}
 	
 	public void pintar(String[][] matriz) {
+		/**
+
+ * Este metodo se encarga de pintar el tablero en la ventana
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		
 		for (int x=0; x < matriz.length; x++) {
 			
@@ -78,6 +102,18 @@ public class Tablero extends JFrame{
 
 
 	public void cargarTablero() {
+		/**
+
+ * Este metodo se encarga de cargar el tablero
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		super.setTitle("Scrabble");
 		JLabel background, letrasfondo;
 		setSize(1100, 1000);
@@ -1728,7 +1764,7 @@ public class Tablero extends JFrame{
 
 	public void cargarFichas() {		
 		
-		JLabel a,b,c,ch,d,e,f,g,h,i,j,l,ll,m,n,ñ,o,p,q,r,rr,s,t,u,v,x,y,z;
+		JLabel a,b,c,ch,d,e,f,g,h,i,j,l,ll,m,n,Ã±,o,p,q,r,rr,s,t,u,v,x,y,z;
 
 //		ImageIcon letra_a = A.getImage();
 //		ImageIcon letra_b = B.getImage();
@@ -1745,7 +1781,7 @@ public class Tablero extends JFrame{
 //		ImageIcon letra_ll = LL.getImage();
 //		ImageIcon letra_m = M.getImage();
 //		ImageIcon letra_n = N.getImage();
-//		ImageIcon letra_ñ = Ñ.getImage();
+//		ImageIcon letra_Ã± = Ã‘.getImage();
 //		ImageIcon letra_o = O.getImage();
 //		ImageIcon letra_p = P.getImage();
 //		ImageIcon letra_q = Q.getImage();
@@ -1820,9 +1856,9 @@ public class Tablero extends JFrame{
 		n.setBounds(736,812, 49, 50);
 		add(n);
 
-		ñ = new JLabel(letra_ñ);
-		ñ.setBounds(36,864,49,50);
-		add(ñ);
+		Ã± = new JLabel(letra_Ã±);
+		Ã±.setBounds(36,864,49,50);
+		add(Ã±);
 
 		o = new JLabel(letra_o);
 		o.setBounds(86,864, 49, 50);
@@ -1889,7 +1925,7 @@ public class Tablero extends JFrame{
 		l.addMouseListener(listener);
 		m.addMouseListener(listener);
 		n.addMouseListener(listener);
-		ñ.addMouseListener(listener);
+		Ã±.addMouseListener(listener);
 		o.addMouseListener(listener);
 		p.addMouseListener(listener);
 		q.addMouseListener(listener);
@@ -1916,7 +1952,7 @@ public class Tablero extends JFrame{
 		l.setTransferHandler(new TransferHandler("icon"));
 		m.setTransferHandler(new TransferHandler("icon"));
 		n.setTransferHandler(new TransferHandler("icon"));
-		ñ.setTransferHandler(new TransferHandler("icon"));
+		Ã±.setTransferHandler(new TransferHandler("icon"));
 		o.setTransferHandler(new TransferHandler("icon"));
 		p.setTransferHandler(new TransferHandler("icon"));
 		q.setTransferHandler(new TransferHandler("icon"));
