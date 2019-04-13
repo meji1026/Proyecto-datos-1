@@ -17,18 +17,20 @@ import socketServer.Server;
 
 public class Serializador {
 	/**
-
- * Esta clase se encarga del manejo de la serializacion de Json
-
+ * Esta clase se encarga de parsear objetos a Json.
  * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
  
-
  * @version: 4/12/2019
-
  
-
  */
 	static ObjectMapper mapper = new ObjectMapper();
+	/**
+ * Este metodo pasa de una lista enlazada de objetos a un Json.
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	public static <T> String serializar( ListaEnlazadaSimple<T> Lista) throws IOException {
 		Nodo <T> aux = Lista.getFirst();
@@ -50,6 +52,13 @@ public class Serializador {
 	return json;	
 	
 	}
+	/**
+ * Esta clase se encarga de pasar du un Json a un arraylist de objetos Ficha
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	public static ArrayList<Ficha> deserializar(String json) throws JsonParseException, JsonMappingException, IOException {
 		
@@ -59,6 +68,14 @@ public class Serializador {
 		
 		
 	}
+	
+	/**
+ * Esta metodo obtiene la palabra enviada por el cliente a partir del array deserializado
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	public static String palabra(ArrayList<Ficha> palabra) {
 		int contador = 0;
@@ -89,6 +106,14 @@ public class Serializador {
 			
 		
 	}
+	
+	/**
+ * Esta metodo obtiene el puntaje de la palabra enviada por el cliente a partir del array deserializado
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	
 	public static int puntaje(ArrayList<Ficha> palabra) {
