@@ -3,6 +3,18 @@ package estructurasDeDatos;
 import Entidades.Ficha;
 
 public class ListaEnlazadaSimple <T> implements java.io.Serializable{
+	/**
+
+ * Esta clase se encarga de el manejo de la lista enlazada que representa la palabra
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	
 	private int len;
 	private Nodo <T> first;
@@ -18,6 +30,18 @@ public class ListaEnlazadaSimple <T> implements java.io.Serializable{
 		return this.len;}
 
 	public void addLast(T data) {
+		/**
+
+ * Este metodo se encarga de anadir una letra a la lista enlazada 
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		Nodo <T> newNodo = new Nodo <T>();
 		newNodo.setData(data);
 		if(isEmpty()) {
@@ -35,7 +59,18 @@ public class ListaEnlazadaSimple <T> implements java.io.Serializable{
 	}
 	
 	
-	public void deleteLast() {
+	public void deleteLast() {/**
+
+ * Este metodo se encarga de eliminar un elemnto al final de la lista enlazada 
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		Nodo<T> aux = new Nodo<T>();
 		aux = getFirst();
 		if(isEmpty() || len == 1 ) {
