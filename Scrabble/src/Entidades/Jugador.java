@@ -22,12 +22,48 @@ public class Jugador{
 	public int puntaje = 0;
 	
 	public String[][] getMatriz() {
+		/**
+
+ * Este metodo se necarga de retornar una matriz
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		return matriz;
 	}
 	public void setMatriz(String[][] matriz) {
+		/**
+
+ * Este metodo se encarga de definir la matriz
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		this.matriz = matriz;
 	}
 	public ListaEnlazadaSimple<Ficha> getPalabra() {
+		/**
+
+ * Este metodo se encarga de retornar la palabra d ela lista enlazada
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		return palabra;
 	}
 	public void setPalabra(ListaEnlazadaSimple<Ficha> palabra) {
@@ -44,6 +80,18 @@ public class Jugador{
 	
 	
 	public void agregar_letra(String letra, String pos) {
+		/**
+
+ * Este metodo se encarga de declarar una matriz 15x15
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		if(pos.length()==2) {
 		j.matriz[Integer.parseInt(Character.toString(j.pos.charAt(0)))][Integer.parseInt(Character.toString(j.pos.charAt(1)))] = j.letra;
 		}else if (pos.length()==3){
@@ -60,6 +108,18 @@ public class Jugador{
 		
 	}
 	public void enviar_palabra() {
+		/**
+
+ * Esta metodo se encarga de enviar la palabra 
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		palabra.print();
 		for (int x=0; x < matriz.length; x++) {
 			  System.out.print("|");
