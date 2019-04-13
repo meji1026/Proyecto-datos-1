@@ -9,9 +9,33 @@ import javax.swing.*;
 import socketServer.Client;
 
 public class Mainventana extends JFrame implements ActionListener{
+	/**
+
+ * Esta clase se encarga de manejar la ventana que se vera durante el juego
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 
 	private Tablero tablero;
 	public Mainventana() {
+		/**
+
+ * Este metodo se encarga de definir las caracteristicas de la ventana
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		
     	
     	
@@ -47,6 +71,18 @@ public class Mainventana extends JFrame implements ActionListener{
 		
 		
         public void actionPerformed(ActionEvent e) {
+		/**
+
+ * Este metodo se encarga de ejecutar las acciones
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
         		this.setVisible(false);
                 this.dispose();
                 this.tablero.cargarFichas();
@@ -57,6 +93,18 @@ public class Mainventana extends JFrame implements ActionListener{
             }
         
         public Tablero getTablero() {
+		/**
+
+ * Este metodo se encarga de retornar el tablero
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
         	return this.tablero;
         }
 
