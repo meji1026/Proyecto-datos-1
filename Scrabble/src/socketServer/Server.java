@@ -11,6 +11,13 @@ import serializador.Serializador;
   
 //clase servidor
 public class Server {
+	/**
+ * Esta clase controla el servidor del juego
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	private static String matriz[][] = new String[15][15];
 	
@@ -36,7 +43,13 @@ public class Server {
 		
 		private ObjectOutputStream salida2;
 		
-		
+		/**
+ * Este método inicia al servidor para que este este a la escucha de la conexion del cliente
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
     public void start(){ 
         try {
        
@@ -99,6 +112,13 @@ public class Server {
 }
 
 //clase hilo que maneja la conexion
+/**
+ * Esta clase se encarga de manejar un hilo para cada cliente.
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 class ClientHandler extends Thread  { 
 	
 	//informacion que recibe el servidor
@@ -127,6 +147,13 @@ class ClientHandler extends Thread  {
   
     @Override
     //metodo run() que inicia el hilo
+	/**
+ * Este metodo inicia el hilo de conexión con el cliente.
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
     public void run()  { 
     	//string en donde se guarda al informacion que recibe el servidor
         String received;
