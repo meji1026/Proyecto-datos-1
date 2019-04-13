@@ -3,9 +3,21 @@ package Entidades;
 
 
 public class Ficha  {
+	/**
+
+ * Esta clase se encarga de el control y manejo del objeto ficha
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	public  Ficha() {}
 	private String[] listaPaths = {"src/interfaz/images/a.jpg", "src/interfaz/images/b.jpg", "src/interfaz/images/c.jpg", "src/interfaz/images/ch.jpg", "src/interfaz/images/d.jpg", "src/interfaz/images/e.jpg", "src/interfaz/images/f.jpg", "src/interfaz/images/g.jpg", "src/interfaz/images/h.jpg", "src/interfaz/images/i.jpg", 
-			"src/interfaz/images/j.jpg", "src/interfaz/images/l.jpg", "src/interfaz/images/ll.jpg", "src/interfaz/images/m.jpg", "src/interfaz/images/n.jpg", "src/interfaz/images/ñ.jpg", "src/interfaz/images/o.jpg", "src/interfaz/images/p.jpg", "src/interfaz/images/q.jpg", "src/interfaz/images/r.jpg", 
+			"src/interfaz/images/j.jpg", "src/interfaz/images/l.jpg", "src/interfaz/images/ll.jpg", "src/interfaz/images/m.jpg", "src/interfaz/images/n.jpg", "src/interfaz/images/Ã±.jpg", "src/interfaz/images/o.jpg", "src/interfaz/images/p.jpg", "src/interfaz/images/q.jpg", "src/interfaz/images/r.jpg", 
 			"src/interfaz/images/rr.jpg", "src/interfaz/images/s.jpg", "src/interfaz/images/t.jpg", "src/interfaz/images/u.jpg", "src/interfaz/images/v.jpg", "src/interfaz/images/x.jpg", "src/interfaz/images/y.jpg" , "src/interfaz/images/z.jpg"};
 	private String path;
 	private String letra;
@@ -13,6 +25,18 @@ public class Ficha  {
 	private String pos;
 	
 	public Ficha(String letra,String pos) {
+		/**
+
+ * Este metodo se encarga de manejar los posibles casos de ficha
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		this.letra = letra;		
 		switch(letra) {
 		case "A":
@@ -75,7 +99,7 @@ public class Ficha  {
 			this.path = listaPaths[14];
 			this.valor = 1;
 			break;
-		case "Ñ":
+		case "Ã‘":
 			this.path = listaPaths[15];
 			this.valor = 8;
 			break;
@@ -209,7 +233,7 @@ public class Ficha  {
 			this.path = listaPaths[14];
 			this.valor = 1;
 			break;
-		case "Ñ":
+		case "Ã‘":
 			this.path = listaPaths[15];
 			this.valor = 8;
 			break;
@@ -268,7 +292,19 @@ public class Ficha  {
 		}
 	}
 
-	public String[] getListaPaths() {
+	public String[] getListaPaths() 
+		/**
+
+ * Este metodo se encarga de obetener el path de la lista
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		return listaPaths;
 	}
 
