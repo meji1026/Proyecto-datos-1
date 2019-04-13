@@ -4,6 +4,18 @@ import java.util.Scanner;
 
 
 public class validacion {
+	/**
+
+ * Esta clase se encarga de validar si la palabra se encuentra en el dicionario 
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	
 	public static boolean validarPalabra(String texto) {
 	
@@ -17,13 +29,13 @@ public class validacion {
 		    entrada = new Scanner(f);
 		    while (entrada.hasNext()) { //mientras no se llegue al final del fichero
 		    	
-		    	linea = entrada.nextLine(); //se lee una línea
+		    	linea = entrada.nextLine(); //se lee una lÃ­nea
 		    	
-		    	if (linea.equalsIgnoreCase(texto)) {   //si la línea contiene el texto buscado se muestra por pantalla
+		    	if (linea.equalsIgnoreCase(texto)) {   //si la lÃ­nea contiene el texto buscado se muestra por pantalla
 		    		contiene = true;
 		    		break;
 		    		}
-		    	numeroDeLinea++; //se incrementa el contador de líneas
+		    	numeroDeLinea++; //se incrementa el contador de lÃ­neas
 		    	}  
 		    if (entrada != null) {
 		    	entrada.close();
