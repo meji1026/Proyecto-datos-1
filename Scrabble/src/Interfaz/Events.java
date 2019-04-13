@@ -11,8 +11,32 @@ import Entidades.Ficha;
 import Entidades.Jugador;
 
 public class Events implements MouseListener {
+	/**
+
+ * Esta clase se encarga del majo de los eventos en el juego
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	
 	public void mousePressed(MouseEvent e) {
+		/**
+
+ * Este metodo se encarga de ver si el mouse esta presionado o no
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		
 		Jugador j = Jugador.getInstance();
 	
