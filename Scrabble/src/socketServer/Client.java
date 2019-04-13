@@ -11,6 +11,13 @@ import serializador.Serializador;
 
  //clase cliente
 public class Client  {
+	/**
+ * Esta clase controla los clientes del servidor
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	private Client() {
 		
 	}
@@ -44,6 +51,13 @@ public class Client  {
 		private ClientThread hilo;
 		
 	//metodo que inicia el cliente
+	/**
+ * Este metodo inicia un nuevo cliente y lo conecta con el servidor
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
     public  void start()   { 
         try{ 
         	//variable que se encarga de leer archivos
@@ -100,6 +114,13 @@ public class Client  {
 	}
 }
 
+/**
+ * Esta clase es un hilo encargado de la comunicación cliente-servidor
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 
 class ClientThread extends Thread{
 	
@@ -135,6 +156,14 @@ class ClientThread extends Thread{
 	    this.salida = salida;
 	    this.entrada2 = entrada2;
 	}
+	
+	/**
+ * Este metodo empieza a ejecutar el hilo para enviar y recibir información del servidor.
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+ * @version: 4/12/2019
+ 
+ */
 	
 	 public  void run()   { 
 	        try{
