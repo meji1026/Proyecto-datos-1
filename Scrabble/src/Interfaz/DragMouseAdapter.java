@@ -13,11 +13,34 @@ import Entidades.Ficha;
 import Entidades.Jugador;
 
 public class DragMouseAdapter extends MouseAdapter{
-	
+	/**
+
+ * Esta clase se encarga de el manejo del mouse
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	private ListaEnlazadaSimple<Ficha> lista = new ListaEnlazadaSimple<Ficha>();
 	Client cliente = Client.getInstance();
 	
 	public void mousePressed(MouseEvent e) {
+		/**
+
+ * Este metodo se encarga de ver el estado del click
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		Jugador jugador = Jugador.getInstance();
 		JComponent c = (JComponent) e.getSource();
 		if(c.getName() == "button1") {
@@ -45,6 +68,18 @@ public class DragMouseAdapter extends MouseAdapter{
 	}
 	
 	public ListaEnlazadaSimple<Ficha> getListaFichas(){
+		/**
+
+ * Este metodo se encarga de retornar la lista enlazada 
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 		return lista;
 	}
 	
