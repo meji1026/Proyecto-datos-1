@@ -4,6 +4,18 @@ import estructurasDeDatos.ListaEnlazadaSimple;
 
 
 public class Jugador{
+	/**
+
+ * Esta clase se encarga de el manejo del jugador
+
+ * @author: Abigail Abarca, Haziel Gudino, Daniel Nunez, Victoria Ruiz
+ 
+
+ * @version: 4/12/2019
+
+ 
+
+ */
 	static Jugador j = new Jugador();
 	public String letra="null";
 	public String pos = "";
